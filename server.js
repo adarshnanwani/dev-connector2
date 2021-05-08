@@ -6,6 +6,9 @@ const app = express();
 // Connect Database
 connectDB();
 
+// Init Middleware
+app.use(express.json({ extended: false }));
+
 // Define Route
 const authRoute = require('./routes/api/auth');
 const postsRoute = require('./routes/api/posts');
