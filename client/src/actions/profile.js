@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PROFILE, PROFILE_ERROR } from './types';
+import { GET_PROFILE, CLEAR_PROFILE, PROFILE_ERROR } from './types';
 import { setAlert } from './alert';
 
 // Get current user's profile
@@ -16,4 +16,11 @@ export const getCurrentProfile = () => async (dispatch) => {
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
+};
+
+// Clear profile
+export const clearProfile = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_PROFILE,
+  });
 };
