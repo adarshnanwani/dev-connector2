@@ -37,12 +37,12 @@ const Dashboard = ({
           </div>
         </>
       ) : (
-        <Experience>
+        <>
           <p>You have not set up a profile, please add some info.</p>
           <Link to='/create-profile' className='btn btn-primary my-1'>
             Create Profile
           </Link>
-        </Experience>
+        </>
       )}
     </>
   );
