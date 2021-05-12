@@ -141,28 +141,18 @@ export const addComment = (formData, postId) => async (dispatch) => {
 };
 
 // Remove comment
-export const removeComment =
-  (formData, postId, commentId) => async (dispatch) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    try {
-      const res = await axios.delete(
-        `/api/posts/comment/${postId}/${commentId}`,
-        formData,
-        config
-      );
-      dispatch({
-        type: REMOVE_COMMENT,
-        payload: res.data,
-      });
-      dispatch(setAlert('Comment removed', 'success'));
-    } catch (err) {
-      dispatch({
-        type: POST_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status },
-      });
-    }
-  };
+export const removeComment = (postId, commentId) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: res.data,
+    });
+    dispatch(setAlert('Comment removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
